@@ -22,3 +22,61 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.products {
+    display:grid;
+    grid-template-columns:repeat(4, 276px);
+    grid-template-rows:repeat(4, 276px);
+    grid-gap:12px;
+}
+
+.product {
+    grid-column:span 1;
+    grid-row:span 1;
+    border:1px solid #EEEEEE;
+    padding:10px;
+    color:black;
+    text-decoration:none;
+}
+
+.product:hover, .firstproduct:hover {
+    background-color:#EEEEEE;
+    color:black;
+    text-decoration:none;
+}
+
+.product img, .firstproduct img {
+    width:100%;
+    height:auto;
+}
+
+.product p, .firstproduct p {
+    display:inline;
+}
+
+.product p .btn-success, .firstproduct p .btn-success {
+    float:right;
+}
+
+.firstproduct {
+    grid-column: span 2;
+    grid-row: span 2;
+    border: 1px solid #EEEEEE;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.body-content {
+    margin-left:6.5vw;
+}
+
+.glyphicon-shopping-cart {
+    margin-right:5px;
+}
+
+@media only screen and (max-width:1140px) {
+    .products {
+        grid-template-columns: repeat(auto-fit, 276px);
+    }
+}

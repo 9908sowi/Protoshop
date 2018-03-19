@@ -14,9 +14,9 @@ namespace Protoshop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
+                name: "Productss",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Productss", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

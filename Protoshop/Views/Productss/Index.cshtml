@@ -4,6 +4,13 @@
     ViewBag.Title = "Produkter";
 }
 
+@using(Html.BeginForm("Index", "Productss", FormMethod.Get))
+{
+    <label for="search">Sök: </label>
+    <input type="text" id="search" name="search" placeholder="Sök..." />
+    <input type="submit" value="Sök"/>
+}
+
 <h2>Produkter</h2>
 
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
@@ -19,7 +26,7 @@
      {
          if (first)
          {
-            <a href="@Url.Action("Details", "Products", new { id = item.ID })" class="firstproduct">
+            <a href="@Url.Action("Details", "Productss", new { id = item.ID })" class="firstproduct">
                 <img src="@Url.Content("~/Content/Images/blacktshirt.jpg")" alt="T-shirt" />
                 <h3>@item.Name</h3>
                 <p>@item.Price</p>
@@ -30,7 +37,7 @@
          }
          else
          {
-            <a href="@Url.Action("Details", "Products", new { id = item.ID })" class="product">
+            <a href="@Url.Action("Details", "Productss", new { id = item.ID })" class="product">
                 <img src="@Url.Content("~/Content/Images/blacktshirt.jpg")" alt="T-shirt" />
                 <h3>@item.Name</h3>
                 <p>@item.Price</p>

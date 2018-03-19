@@ -6,9 +6,9 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
+<img src="@Url.Content("~/Content/Images/blacktshirt.jpg")" alt="T-shirt" />
+
+<div class="details">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Category.Name)
@@ -51,6 +51,7 @@
         </dd>
 
     </dl>
+    <p><span class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Köp</span></p>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

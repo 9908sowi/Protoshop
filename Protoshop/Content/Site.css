@@ -75,8 +75,34 @@ textarea {
     margin-right:5px;
 }
 
+.details {
+    display:inline;
+    float:right;
+    margin-right:20vw;
+}
+
+.details p {
+    float:right;
+    margin-top:180px;
+}
+
+.details + p {
+    float:left;
+}
+
 @media only screen and (max-width:1140px) {
     .products {
         grid-template-columns: repeat(auto-fit, 276px);
+    }
+
+    .details {
+        margin:0;
+        float:left;
+        display:block;
+    }
+
+    .details + p {
+        float:right;
+        margin-right:10vw;
     }
 }

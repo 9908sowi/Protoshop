@@ -15,9 +15,13 @@ namespace Protoshop.Controllers
         private ProductDbContext db = new ProductDbContext();
 
         // GET: Productss
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             var products = db.Products.Include(p => p.Category);
+            if(!String.IsNullOrEmpty(search))
+            {
+                products = products.Where(p => p.Name.Contains(search));
+            }
             return View(products.ToList());
         }
 

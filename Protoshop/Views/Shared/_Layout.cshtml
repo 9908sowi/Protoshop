@@ -11,6 +11,7 @@
 <body>
     <header class="container">
         <h1>Protoshop</h1>
+        @Html.Partial("_LoginPartial")
     </header>
     <div class="container">
         <div class="navbar navbar-inverse">
@@ -26,7 +27,6 @@
                     <li>@Html.ActionLink("Produkter", "Index", "Productss")</li>
                     <li>@Html.ActionLink("Kategorier", "Index", "Categories")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

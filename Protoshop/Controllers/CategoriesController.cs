@@ -10,16 +10,19 @@ using Protoshop.Models;
 
 namespace Protoshop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private ProductDbContext db = new ProductDbContext();
 
+        [AllowAnonymous]
         // GET: Categories
         public ActionResult Index()
         {
             return View(db.Categories.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,6 +37,7 @@ namespace Protoshop.Controllers
             }
             return View(category);
         }
+
 
         // GET: Categories/Create
         public ActionResult Create()

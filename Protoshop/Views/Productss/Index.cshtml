@@ -4,11 +4,13 @@
     ViewBag.Title = "Produkter";
 }
 
-@using(Html.BeginForm("Index", "Productss", FormMethod.Get))
+@using (Html.BeginForm("Index", "Productss", FormMethod.Get))
 {
-    <label for="search">Sök: </label>
-    <input type="text" id="search" name="search" placeholder="Sök..." />
-    <input type="submit" value="Sök"/>
+    <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-search"></i></span>
+        <input type="text" class="form-control" id="search" name="search" placeholder="Sök..."/>
+        <input type="submit" class="hidden"/>
+    </div>
 }
 
 <h2>Produkter</h2>
@@ -21,29 +23,29 @@
 }
 
 <div class="products">
-     @{ bool first = true; }
-     @foreach (var item in Model)
-     {
-         if (first)
-         {
+    @{ bool first = true; }
+    @foreach (var item in Model)
+    {
+        if (first)
+        {
             <a href="@Url.Action("Details", "Productss", new { id = item.ID })" class="firstproduct">
-                <img src="@Url.Content("~/Content/Images/blacktshirt.jpg")" alt="T-shirt" />
+                <img src="@Url.Content("~/Content/Images/" + item.ImageFile)" alt="T-shirt" />
                 <h3>@item.Name</h3>
-                <p>@item.Price</p>
+                <p>@item.Price kr</p><br/>
                 <p>@item.Description</p>
                 <p><span class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Köp</span></p>
             </a>
             first = false;
-         }
-         else
-         {
+        }
+        else
+        {
             <a href="@Url.Action("Details", "Productss", new { id = item.ID })" class="product">
-                <img src="@Url.Content("~/Content/Images/blacktshirt.jpg")" alt="T-shirt" />
+                <img src="@Url.Content("~/Content/Images/" + item.ImageFile)" alt="T-shirt" />
                 <h3>@item.Name</h3>
-                <p>@item.Price</p>
+                <p>@item.Price kr</p><br/>
                 <p>@item.Description</p>
                 <p><span class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Köp</span></p>
             </a>
         }
-     }
-    </div>
+    }
+</div>

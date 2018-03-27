@@ -5,15 +5,18 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Protoshop.Models;
 
 namespace Protoshop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductssController : Controller
     {
         private ProductDbContext db = new ProductDbContext();
 
+        [AllowAnonymous]
         // GET: Productss
         public ActionResult Index(string search)
         {
@@ -25,6 +28,7 @@ namespace Protoshop.Controllers
             return View(products.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Productss/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,10 +56,13 @@ namespace Protoshop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,Price,ImageFile,CategoryID")] Product product)
+        public ActionResult Create([Bind(Include = "ID,Name,Description,Price,ImageFile,CategoryID")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                WebImage webImage = new WebImage(file.InputStream);
+                webImage.Save("~/Content/Images/" + file.FileName);
+                product.ImageFile = file.FileName;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
